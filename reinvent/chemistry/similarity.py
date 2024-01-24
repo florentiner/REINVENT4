@@ -14,3 +14,6 @@ class Similarity:
         tanimoto = self.calculate_tanimoto(query_fps, ref_fingerprints)
         jaccard = 1 - tanimoto
         return jaccard
+    
+    def calculate_cats_batch(self, cats_mol, cats_mols) -> np.array:
+        return np.linalg.norm(np.array([cats_mol]) - np.array(cats_mols), axis=1)

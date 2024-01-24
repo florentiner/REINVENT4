@@ -14,3 +14,6 @@ mprofile_*.dat
 /reinvent.egg-info/*
 /reinvent.egg-info/dependency_links.txt
 /build/
+staged_learning.toml
+warheads.smi
+Dockerfile

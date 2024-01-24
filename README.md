@@ -66,6 +66,10 @@ Installation
     ```shell
     reinvent --help
     ```
+7. To use CATS (Optional)
+   ```shell
+    git clone https://github.com/iwatobipen/CATS2D.git && pip install -e CATS2D/.
+    ```
 
 Basic Usage
 -----------

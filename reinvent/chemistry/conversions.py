@@ -13,6 +13,8 @@ from rdkit.Chem.rdchem import Mol
 from rdkit.Chem.rdmolops import RenumberAtoms
 from rdkit.DataStructs.cDataStructs import UIntSparseIntVect
 from molvs import Standardizer
+from cats2d.rd_cats2d import CATS2D #only git install
+cats = CATS2D()
 
 
 class Conversions:
@@ -35,6 +37,16 @@ class Conversions:
             for mol in molecules
         ]
         return fingerprints
+    
+    @staticmethod
+    def mols_to_CATS(
+        molecules: List[Mol]
+    ) -> List[UIntSparseIntVect]:
+        cats_mols = [
+            cats.getCATs2D(mol)
+            for mol in molecules
+        ]
+        return cats_mols
 
     @staticmethod
     def smiles_to_mols(query_smiles: List[str]) -> List[Mol]:
@@ -52,6 +64,13 @@ class Conversions:
             mols, radius=radius, use_counts=use_counts, use_features=use_features
         )
         return fingerprints
+    
+    def smiles_to_CATS(
+        self, query_smiles: List[str]
+    ) -> List[UIntSparseIntVect]:
+        mols = self.smiles_to_mols(query_smiles)
+        cats_mols = self.mols_to_CATS(mols)
+        return cats_mols
 
     def smile_to_mol(self, smile: str) -> Mol:
         """

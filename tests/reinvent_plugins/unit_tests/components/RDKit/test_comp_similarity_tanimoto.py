@@ -2,7 +2,7 @@ import pytest
 
 import numpy as np
 
-from reinvent_plugins.components.RDKit.comp_similarity import (
+from reinvent_plugins.components.RDKit.comp_similarity_tanimoto import (
     Parameters,
     TanimotoDistance,
 )
@@ -41,7 +41,7 @@ from reinvent_plugins.components.RDKit.comp_similarity import (
         ),
     ],
 )
-def test_comp_similarity(smiles, radius, use_counts, use_features, expected_results):
+def test_comp_similarity_tanimoto(smiles, radius, use_counts, use_features, expected_results):
     params = Parameters(
         [smiles],
         [radius],
